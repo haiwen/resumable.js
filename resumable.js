@@ -222,7 +222,8 @@
       // e.currentTarget.classList.remove($.getOpt('dragOverClass'));
       $h.stopEvent(e);
 
-      if (e.dataTransfer.getData('text/plain') === 'move-dirent-item') {
+      var dt = e.dataTransfer;
+      if ($.indexOf(dt.types, "Files") < 0) {
         return;
       }
 
@@ -241,13 +242,6 @@
     };
     var onDragOverEnter = function(e) {
       e.preventDefault();
-
-      if (e.type === 'dragover') {
-        if (e.dataTransfer.getData('text/plain') === 'move-dirent-item') {
-          return;
-        }
-      }
-
       var dt = e.dataTransfer;
       if ($.indexOf(dt.types, "Files") >= 0) { // only for file drop
         e.stopPropagation();
