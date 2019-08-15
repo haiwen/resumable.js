@@ -500,6 +500,10 @@
       $._pause = false;
       $.container = '';
       $.preprocessState = 0; // 0 = unprocessed, 1 = processing, 2 = finished
+      $.error = null ; // error = null : success, error != null : error
+      $.remainingTime = 0; // remainingTime = 0 : uploaded, remainingTime != 0 : uploading
+      $.isSaved = false;
+      $.newFileName = $.fileName; // need a default name
       var _error = uniqueIdentifier !== undefined;
 
       // Callback when something happens within the chunk
