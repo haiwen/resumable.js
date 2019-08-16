@@ -501,7 +501,7 @@
       $.container = '';
       $.preprocessState = 0; // 0 = unprocessed, 1 = processing, 2 = finished
       $.error = null ; // error = null : success, error != null : error
-      $.remainingTime = 0; // remainingTime = 0 : uploaded, remainingTime != 0 : uploading
+      $.remainingTime = -1; // remainingTime = -1 : preparing, remainingTime != 0 : uploading, remainingTime = 0; uploaded
       $.isSaved = false;
       $.newFileName = $.fileName; // need a default name
       var _error = uniqueIdentifier !== undefined;
