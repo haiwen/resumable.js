@@ -1141,9 +1141,7 @@
       var totalSize = 0;
       // Resume all chunks currently being uploaded
       $h.each($.files, function(file){
-        if(file.size !== 0){
-          totalDone += file.progress()*file.size;
-        }
+        totalDone += file.progress()*file.size;
         totalSize += file.size;
       });
       return(totalSize>0 ? totalDone/totalSize : 0);
