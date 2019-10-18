@@ -953,6 +953,7 @@
       };
       $.progress = function(relative){
         if(typeof(relative)==='undefined') relative = false;
+        if($.fileObjSize === 0) return 1;
         var factor = (relative ? ($.endByte-$.startByte)/$.fileObjSize : 1);
         if($.pendingRetry) return(0);
         if((!$.xhr || !$.xhr.status) && !$.markComplete) factor*=.95;
@@ -1140,7 +1141,9 @@
       var totalSize = 0;
       // Resume all chunks currently being uploaded
       $h.each($.files, function(file){
-        totalDone += file.progress()*file.size;
+        if(file.size !== 0){
+          totalDone += file.progress()*file.size;
+        }
         totalSize += file.size;
       });
       return(totalSize>0 ? totalDone/totalSize : 0);
