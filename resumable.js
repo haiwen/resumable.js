@@ -953,6 +953,7 @@
       };
       $.progress = function(relative){
         if(typeof(relative)==='undefined') relative = false;
+        if($.fileObjSize === 0) return 1;
         var factor = (relative ? ($.endByte-$.startByte)/$.fileObjSize : 1);
         if($.pendingRetry) return(0);
         if((!$.xhr || !$.xhr.status) && !$.markComplete) factor*=.95;
